@@ -126,3 +126,130 @@ mySearch = function(src, sub) {
 ```
 함수 표현식이 숫자 나 문자열을 반환했다면, 타입 검사는 반환 타입이 SearchFunc 인터페이스에 정의된 반환 타입과 일치하지 않는다는 에러를 발생시킵니다.
 
+## 인덱서블 타입 (Indexable Types)
+인터페이스로 함수 타입을 설명하는 방법과 유사하게, a[10] 이나 ageMap["daniel"] 처럼 타입을 "인덱스로" 기술할 수 있습니다. 인덱서블 타입은 인덱싱 할때 해당 반환 유형과 함께 객체를 인덱싱하는 데 사용할 수 있는 타입을 기술하는 인덱스 시그니처 (index signature)를 가지고 있습니다.
+```
+interface StringArray {
+    [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
+
+let myStr: string = myArray[0];
+```
+## 인터페이스 구현하기 (Implementing an interface)
+```
+interface ClockInterface {
+    currentTime: Date;
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date = new Date();
+    constructor(h: number, m: number) { }
+}
+```
+
+# ****다시볼것****
+## 클래스의 스태틱과 인스턴스의 차이점 (Difference between the static and instance sides of classes)
+
+클래스와 인터페이스를 다룰 때, ***클래스는 두 가지 타입을 가진다***는 것을 기억하는 게 좋습니다: ***스태틱 타입과 인스턴스 타입***입니다. 생성 시그니처 (construct signature)로 인터페이스를 생성하고, 클래스를 생성하려고 한다면, 인터페이스를 implements 할 때, 에러가 발생하는 것을 확인할 수 있을 겁니다:
+```
+//생성자 정의
+interface ClockConstructor {
+    new (hour: number, minute: number);
+}
+
+class Clock implements ClockConstructor {
+    currentTime: Date;
+    constructor(h: number, m: number) { }
+}
+```
+클래스가 인터페이스를 implements 할 때, 클래스의 인스턴스만 검사하기 때문입니다. 생성자가 스태틱이기 때문에, 이 검사에 포함되지 않습니다.
+
+대신에, 클래스의 스태틱 부분을 직접적으로 다룰 필요가 있습니다. 이번 예제에서, ClockConstructor는 생성자를 정의하고, ClockInterface는 인스턴스 메서드를 정의하는 두 인터페이스를 정의합니다. 그리고, 편의를 위해, 전달된 타입의 인스턴스를 생성하는 createClock 생성자 함수를 정의합니다:
+```
+//생성자 interface
+interface ClockConstructor {
+    new (hour: number, minute: number): ClockInterface;
+}
+//method interface
+interface ClockInterface {
+    tick(): void;
+}
+
+// 생성자 method
+function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
+    return new ctor(hour, minute);
+}
+
+class DigitalClock implements ClockInterface {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log("beep beep");
+    }
+}
+
+class AnalogClock implements ClockInterface {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log("tick tock");
+    }
+}
+
+let digital = createClock(DigitalClock, 12, 17);
+let analog = createClock(AnalogClock, 7, 32);
+```
+또 다른 방법
+```
+interface ClockConstructor {
+  new (hour: number, minute: number);
+}
+
+interface ClockInterface {
+  tick();
+}
+
+const Clock: ClockConstructor = class Clock implements ClockInterface {
+  constructor(h: number, m: number) {}
+  tick() {
+      console.log("beep beep");
+  }
+}
+```
+***이 방법이 더 편해보이는데...?***
+## 인터페이스 확장하기 (Extending Interfaces)
+클래스처럼, 인터페이스들도 확장(extend)이 가능합니다. 이는 한 인터페이스의 멤버를 다른 인터페이스에 복사하는 것을 가능하게 해주는데, 인터페이스를 재사용성 높은 컴포넌트로 쪼갤 때, 유연함을 제공해줍니다.
+```
+interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}
+
+let square = {} as Square;
+square.color = "blue";
+square.sideLength = 10;
+```
+```
+interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}
+
+let square = {} as Square;
+square.color = "blue";
+square.sideLength = 10;
+square.penWidth = 5.0;
+```
+
+TODO: 하이브리드 타입, 클래스를 확장한 인터페이스 다시보고 기록할 것
