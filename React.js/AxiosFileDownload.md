@@ -21,5 +21,5 @@ ByteArray로 내려주는 값을 받기 위해서는 axios 헤더에 responseTyp
 
 ## 해결방법
  - API 서버에서 'Access-Control-Allow-Origin : *'을 추가해주지 않는 이상, 크롬에서 "file://" URL로 API 데이터를 받아올 수 없다.
- - API 서버에서 'Access-Control-Allow-Origin : *'을 추가해주지 않는 이상, 크롬에서 "file://" URL로 API 데이터를 받아올 수 없다.
+ - API 서버에서 서버에서 API 데이터를 받아서 포워딩을 해주고, 포워딩 한 데이터를 다시 받아와야한다.
  - Allow CORS: Access-Control-Allow-Origin 크롬 확장자를 이용한다
