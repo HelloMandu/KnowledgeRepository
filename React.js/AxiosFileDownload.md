@@ -16,7 +16,7 @@ ByteArray로 내려주는 값을 받기 위해서는 axios 헤더에 responseTyp
 
 **Origin null is not allowed by Access-Control-Allow-Origin**
 
-***"크롬에서 로컬로 파일을 열어서는 해결할 수 없다."*** 
+**"크롬에서 로컬로 파일을 열어서는 해결할 수 없다."**
 브라우저마다 다르지만, 크롬은 SOP(Same Origin Policy)가 엄격해서 file://로 열때 해결할 수 없다고 합니다.
 
 ## 해결방법
