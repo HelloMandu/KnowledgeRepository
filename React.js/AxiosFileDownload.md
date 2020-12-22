@@ -16,10 +16,10 @@ ByteArray로 내려주는 값을 받기 위해서는 axios 헤더에 responseTyp
 
 **Origin null is not allowed by Access-Control-Allow-Origin**
 
-***"크롬에서 로컬로 파일을 열어서는 해결할 수 없다."*** 
+**"크롬에서 로컬로 파일을 열어서는 해결할 수 없다."**
 브라우저마다 다르지만, 크롬은 SOP(Same Origin Policy)가 엄격해서 file://로 열때 해결할 수 없다고 합니다.
 
 ## 해결방법
  - API 서버에서 'Access-Control-Allow-Origin : *'을 추가해주지 않는 이상, 크롬에서 "file://" URL로 API 데이터를 받아올 수 없다.
- - API 서버에서 'Access-Control-Allow-Origin : *'을 추가해주지 않는 이상, 크롬에서 "file://" URL로 API 데이터를 받아올 수 없다.
+ - API 서버에서 서버에서 API 데이터를 받아서 포워딩을 해주고, 포워딩 한 데이터를 다시 받아와야한다.
  - Allow CORS: Access-Control-Allow-Origin 크롬 확장자를 이용한다
