@@ -27,3 +27,84 @@
   - 파라미터 외의 값에는 의존하면 안됨
   - 이전 상태는 절대로 건드리지 않고, 변화를 준 새로운 상태 객체를 만들어서 반환
   - 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을 반환
+
+
+## Couter module 만들기
+
+### modules/counter.js
+```js
+/* 액션 타입 만들기 */
+// Ducks 패턴을 따를땐 액션의 이름에 접두사를 넣어주세요.
+// 이렇게 하면 다른 모듈과 액션 이름이 중복되는 것을 방지 할 수 있습니다.
+const SET_DIFF = 'counter/SET_DIFF';
+const INCREASE = 'counter/INCREASE';
+const DECREASE = 'counter/DECREASE';
+
+/* 액션 생성함수 만들기 */
+// 액션 생성함수를 만들고 export 키워드를 사용해서 내보내주세요.
+export const setDiff = diff => ({ type: SET_DIFF, diff });
+export const increase = () => ({ type: INCREASE });
+export const decrease = () => ({ type: DECREASE });
+
+/* 초기 상태 선언 */
+const initialState = {
+  number: 0,
+  diff: 1
+};
+
+/* 리듀서 선언 */
+// 리듀서는 export default 로 내보내주세요.
+const counter = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_DIFF:
+      return {
+        ...state,
+        diff: action.diff
+      };
+    case INCREASE:
+      return {
+        ...state,
+        number: state.number + state.diff
+      };
+    case DECREASE:
+      return {
+        ...state,
+        number: state.number - state.diff
+      };
+    default:
+      return state;
+  }
+}
+
+export default counter;
+```
+
+## module/index.js
+```js
+import { combineReducers } from 'redux';
+import counter from './counter';
+
+const rootReducer = combineReducers({
+  counter,
+});
+
+export default rootReducer;
+```
+
+## index.js
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux';
+import rootReducer from './modules';
+
+const store = createStore(rootReducer); // 스토어를 만듭니다.
+console.log(store.getState()); // 스토어의 상태를 확인해봅시다.
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+serviceWorker.unregister();
+```
