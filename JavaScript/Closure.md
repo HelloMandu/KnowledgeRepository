@@ -77,6 +77,7 @@ let counter = makeCounter();
 counter.[[Environment]]엔 {count: 0}이 있는 렉시컬 환경에 대한 `참조가 저장`됩니다. 호출 장소와 상관없이 함수가 자신이 태어난 곳을 기억할 수 있는 건 [[Environment]] 프로퍼티 때문임. [[Environment]]는 함수가 생성될 때 딱 한 번 그 값이 세팅
 
 counter()를 호출하면 각 호출마다 새로운 렉시컬 환경이 만들어짐. 그리고 이 렉시컬 환경은 counter.[[Environment]]에 저장된 렉시컬 환경을 외부 렉시컬 환경으로서 참조
+
 ![반환함수실행](https://ko.javascript.info/article/closure/closure-makecounter-nested-call.svg)
 
 실행 흐름이 중첩 함수의 본문으로 넘어오면 count 변수가 필요함
