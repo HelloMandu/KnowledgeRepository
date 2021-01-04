@@ -87,3 +87,201 @@ auto-fill과 auto-fit은 column의 개수를 미리 정하지 않고 설정된 �
 	/* grid-template-columns: repeat(auto-fit, minmax(20%, auto)); */
 }
 ```
+
+## 간격
+- row-gap
+- column-gap
+- gap
+- 
+```css
+.container {
+	row-gap: 10px;
+	/* row의 간격을 10px로 */
+	column-gap: 20px;
+	/* column의 간격을 20px로 */
+}
+```
+```css
+.container {
+	gap: 10px 20px;
+	/* row-gap: 10px; column-gap: 20px; */
+}
+```
+```css
+.container {
+	gap: 20px;
+	/* row-gap: 20px; column-gap: 20px; */
+}
+```
+**IE지원안댐**
+
+## 그리드 형태 자동정의
+
+- grid-auto-rows
+- grid-auto-columns
+```css
+.container {
+	grid-template-rows: repeat(3, minmax(100px, auto));
+}
+/*row 개수를 미리 알 수 없는 경우*/
+.container {
+	grid-auto-rows: minmax(100px, auto);
+}
+```
+
+## 각 셀의 영역지정
+
+- grid-column-start
+- grid-column-end
+- grid-column
+- grid-row-start
+- grid-row-end
+- grid-row
+
+![그리드 영역](https://studiomeal.com/wp-content/uploads/2020/01/07-2.jpg)
+
+### 빨간색 영역
+```css
+.item {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+```
+```css
+.item:nth-child(1) {
+	grid-column: 1 / 3;
+	grid-row: 1 / 2;
+}
+```
+
+몇 개의 셀을 차지하게 할 것인지를 지정해줄 수도 있음
+```css
+.item:nth-child(1) {
+	/* 1번 라인에서 2칸 */
+	grid-column: 1 / span 2;
+	/* 1번 라인에서 3칸 */
+	grid-row: 1 / span 3;
+}
+```
+## 영역 이름으로 그리드 정의
+- grid-template-areas: 영역(Grid Area)에 이름을 붙이고, 그 이름을 이용해서 배치하는 방법
+
+![그리드 이름](https://studiomeal.com/wp-content/uploads/2020/01/08-2.jpg)
+
+```css
+.container {
+	grid-template-areas:
+		"header header header"
+		"   a    main    b   "
+		"   .     .      .   "
+		"footer footer footer";
+}
+```
+```css
+.header { grid-area: header; }
+.sidebar-a { grid-area: a; }
+.main-content { grid-area: main; }
+.sidebar-b { grid-area: b; }
+.footer { grid-area: footer; }
+/* 이름 값에 따옴표가 없는 것에 주의 */
+```
+
+## 세로방향 정렬
+- align-items
+아이템들을 세로(column축) 방향으로 정렬 **컨테이너에 적용**
+```css
+.container {
+	align-items: stretch;
+	/* align-items: start; */
+	/* align-items: center; */
+	/* align-items: end; */
+}
+```
+
+## 가로방향 정렬
+- justify-items
+아이템들을 가로(row축) 방향으로 정렬 **컨테이너에 적용**
+```css
+.container {
+	justify-items: stretch;
+	/* justify-items: start; */
+	/* justify-items: center; */
+	/* justify-items: end; */
+}
+```
+
+### place-items
+align-items와 justify-items를 같이 쓸 수 있는 단축 속성
+```css
+.container {
+	place-items: center start;
+}
+```
+
+## 아이템 그룹 세로 정렬
+- align-content (flex align-item과 유사)
+```css
+.container {
+	align-content: stretch;
+	/* align-content: start; */
+	/* align-content: center; */
+	/* align-content: end; */
+	/* align-content: space-between; */
+	/* align-content: space-around; */
+	/* align-content: space-evenly; */
+}
+```
+
+## 아이템 그룹 가로 정렬
+- justify-content (flex justify-content과 유사)
+```css
+.container {
+	justify-content: stretch;
+	/* justify-content: start; */
+	/* justify-content: center; */
+	/* justify-content: end; */
+	/* justify-content: space-between; */
+	/* justify-content: space-around; */
+	/* justify-content: space-evenly; */
+}
+```
+
+### place-content
+align-content와 justify-content를 같이 쓸 수 있는 단축 속성
+```css
+.container {
+	place-content: space-between center;
+}
+```
+
+## 개별 아이템 세로 정렬
+- align-self
+```css
+.item {
+	align-self: stretch;
+	/* align-self: start; */
+	/* align-self: center; */
+	/* align-self: end; */
+}
+```
+
+## 개별 아이템 가로 정렬
+- justify-self
+```css
+.item {
+	justify-self: stretch;
+	/* justify-self: start; */
+	/* justify-self: center; */
+	/* justify-self: end; */
+}
+```
+
+### place-self
+align-self와 justify-self를 같이 쓸 수 있는 단축 속성
+```css
+.item {
+	place-self: start center;
+}
+```
