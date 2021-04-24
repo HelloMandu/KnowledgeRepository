@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import styled from "@emotion/styled";
+import { PortalWrap } from "./portal-wrap";
 
 const BackDrop = styled.div`
   width: 100vw;
@@ -12,7 +13,6 @@ const BackDrop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
 `;
 
 interface ModalProps {
@@ -25,5 +25,9 @@ export const Modal = ({ show, children, onClose }: ModalProps) => {
   if (!show) {
     return null;
   }
-  return <BackDrop onClick={onClose}>{children}</BackDrop>;
+  return (
+    <PortalWrap>
+      <BackDrop onClick={onClose}>{children}</BackDrop>
+    </PortalWrap>
+  );
 };

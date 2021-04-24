@@ -12,7 +12,7 @@ export const ModalContainer = () => {
         show={openModal}
         onClose={() => setOpenModal((openModal) => !openModal)}
       >
-        <ModalContent title="Modal" content="portal을 사용한 모달입니다." />
+        <ModalContent title="Modal" content="일반 모달입니다." />
       </Modal>
     </>
   );

@@ -8,6 +8,7 @@ const AppWrapper = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  color: #61dafb;
 `;
 
 function App() {
