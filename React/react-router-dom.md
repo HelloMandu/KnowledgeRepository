@@ -56,17 +56,18 @@ const Post = (props) => {
   return <div>Now showing post {id}</div>
 }
 
-const App = () =>{
-  return(
-   <div className='app'>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route path="/blog/:id" component={Post} />
-      </Switch>
-    </Router>
-   </div>
- );
+const App = () => {
+   return (
+           <div className='app'>
+              <Router>
+                 <Switch>
+                    <Route exact path="/" component={Homepage}/>
+                    <Route path="/blog/:id" component={Post}/>
+                 </Switch>
+              </Router>
+           </div>
+   );
+}
 ```
 <hr/>
 
