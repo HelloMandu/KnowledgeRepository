@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://hellomandu.github.io//sitemap.xml
