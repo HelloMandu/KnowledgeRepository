@@ -369,7 +369,7 @@ module.exports = {
 
 ```js
 // webpack.config.js
-var webpack = require('WEB/webpack');
+var webpack = require('web/webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {

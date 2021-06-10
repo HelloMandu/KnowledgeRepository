@@ -2,26 +2,26 @@
 
 ## useHistory
 
-```js
-import {useHistory} from "React/react-router-dom"
+```jsx
+import {useHistory} from "react/react-router-dom"
 
 const Homepage = () => {
-    let history = useHistory()
+   let history = useHistory()
 
-    function goBack() {
-        history.goBack()
-    }
+   function goBack() {
+      history.goBack()
+   }
 
-    function goHome() {
-        history.push('/')
-    }
+   function goHome() {
+      history.push('/')
+   }
 
-    return (
-        <div>
-            <button onClick={goBack}>Previous</button>
-            <button onClick={goHome}>Home</button>
-        </div>
-    )
+   return (
+           <div>
+              <button onClick={goBack}>Previous</button>
+              <button onClick={goHome}>Home</button>
+           </div>
+   )
 }
 
 export default Homepage

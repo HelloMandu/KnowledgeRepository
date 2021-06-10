@@ -1,6 +1,6 @@
 ## axios로 파일 다운로드 받기
 
-```
+```js
 export const requestGetImageFile = async (imageUrl) => {
     const URL = DBImageFormat(imageUrl);
     const response = await axios.get(URL, { responseType: 'blob' });

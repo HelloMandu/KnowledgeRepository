@@ -1,6 +1,6 @@
 # Loading
 
-```js
+```jsx
 const getPaymentInfo = useCallback(
         async () => {
             onLoading();
@@ -24,7 +24,7 @@ const getPaymentInfo = useCallback(
 ***주로 loading과 error를 전역이 아닌 api호출 할 때마다 관리를 하는 게 더 조을 듯 하다***
 
 ## 의문점
-```js
+```jsx
 function *getUserSaga(action) {
     yield put(startLoading(GET_USER));
     try {

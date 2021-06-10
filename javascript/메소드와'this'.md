@@ -12,9 +12,10 @@ let user = {
     alert(this.name);
 
 };
-
+  
 user.sayHi(); // John
 ```
+
 ```js
 let user = {
   name: "John",

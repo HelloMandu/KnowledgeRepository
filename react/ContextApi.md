@@ -1,5 +1,5 @@
 # Context Api
-```js
+```jsx
 const UserList = ({ users, onRemove, onToggle }) => {
   return (
     <div>
@@ -30,7 +30,7 @@ Context 를 만들면, Context 안에 Provider 라는 컴포넌트가 들어있�
 ```
 이렇게 설정해주고 나면 Provider 에 의하여 감싸진 컴포넌트 중 어디서든지 우리가 Context 의 값을 다른 곳에서 바로 조회해서 사용 할 수 있습니다
 
-```js
+```jsx
 //App.js
 import React, { useRef, useReducer, useMemo, useCallback } from 'react';
 import UserList from './UserList';
@@ -143,7 +143,7 @@ const App = () => {
 
 export default App;
 ```
-```js
+```jsx
 //UserList.js
 import React, { useContext } from 'react';
 import { UserDispatch } from './App';

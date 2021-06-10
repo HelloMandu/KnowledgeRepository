@@ -1,7 +1,7 @@
 # CSS Grid
 
 기본구조
-```css
+```html
 <div class="container">
 	<div class="item">A</div>
 	<div class="item">B</div>

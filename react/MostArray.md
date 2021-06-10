@@ -4,7 +4,7 @@
 2. map : 배열 값을 사용하여 JSX코드로 된 배열을 새로 생성 // **key값을 사용해 데이터의 유일성을 설정해야함**
 3. filter : 특정 조건을 만족하는 원소들만 쉽게 분류할 수 있음
 
-```
+```jsx
 import React, {useState} from 'react';
 
 const IterationSample = () =>{

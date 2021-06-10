@@ -10,7 +10,7 @@
  
 ## 커스텀 Hook
 
-```
+```jsx
 import { useState, useEffect } from "react";
 
 export default function usePromise(promiseCreator, deps) {
@@ -33,7 +33,7 @@ export default function usePromise(promiseCreator, deps) {
   return [loading, resolved, error];
 }
 ```
-```
+```jsx
   const [loading, response, error] = usePromise(()=>{
     const query = (category === 'all' ? '' : `&category=${category}`);
     return axios.get(`http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=dabeec94a62a4c2688397e5a0f0f56dc`);
