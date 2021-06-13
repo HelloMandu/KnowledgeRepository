@@ -18,7 +18,7 @@
  - match, location, history 객체를 접근할 수 있게 해줌
  - withRouter를 사용할 때는 컴포넌트를 내보내 줄 때 함수로 감싸 줌
  
- ### Swith
+ ### Switch
   - Route를 감싸서 그 중 일치하는 단 하나의 라우트만을 렌더링 시켜줌
   
   ### NavLink
