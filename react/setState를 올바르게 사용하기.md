@@ -45,7 +45,7 @@ Object.assign과 같이 여러 개의 객체를 합칠 때 같은 key를 가지�
 
 ## 그렇다면 우리가 원하는 값인 3 \* 2 + 1 = 7의 결과를 얻기 위해선 어떻게 해야할까?
 
-![react](../images/react/img.png)
+![react](image/img_1.png)
 
 리액트의 setState는 인자로 두 가지 타입을 받을 수 있습니다.
 

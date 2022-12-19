@@ -132,7 +132,7 @@ const Wrap = styled.div`
 `;
 
 ```
-![react](../images/react/img.gif)
+![react](image/img.gif)
 
 portal을 사용하지 않고 modal을 만들면 위와 같은 결과가 나타나게 됩니다.   
 Modal 컴포넌트가 App컴포넌트 내부에 렌더링 되면서 App Component의 style을 그대로 상속받게 됩니다.   
@@ -195,7 +195,7 @@ const BackDrop = styled.div`
 
 ```
 
-![react](../images/react/img_1.gif)
+![react](image/img_1.gif)
 
 body태그 아래에 Modal이 렌더링 되면서 부모 컴포넌트의 style을 상속받지 않았고 z-index를 따로 관리하지 않아도 되게 되었습니다.   
 
